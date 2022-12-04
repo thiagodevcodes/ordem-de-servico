@@ -2,9 +2,6 @@ const express = require('express');
 const OrdemContoller = require("../controllers/OrdemController")
 var router = express.Router();
 
-
-/* GET home page. */
-
 //CREATE
 
 router.post("/", async(req, res) => {
@@ -31,7 +28,7 @@ router.get("/finalizar/:id", async(req, res) => {
   OrdemContoller.finallyOrdem(req,res);
 })
 
-//DELETE - Aluno
+//DELETE
 
 router.delete("/:id", async(req, res) => {
   OrdemContoller.deleteOrdem(req,res);
