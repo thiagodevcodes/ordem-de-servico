@@ -26,7 +26,8 @@ module.exports = {
         })
         .then( (posts) => {
           res.render("index", {
-            posts: posts
+            posts: posts,
+            user: req.user
           }) 
         }).catch( () => {
             res.send("Not Found");

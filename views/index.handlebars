@@ -22,8 +22,10 @@
         <ul class="nav-list">
           <li><button class="button-nav" onclick="ModalAluno()">Cadastrar Ordem</button></li>
           <li><a class="button-nav" href="/">Serviços</a></li>
-          <li><a class="button-nav" href="/users">Usuários</a></li>
-          <li><a class="button-nav" href="/users/logout">Sair</a></li>
+          {{#if user.admin}}
+            <li><a class="button-nav" href="/users">Usuários</a></li>
+          {{/if}}
+          <li><a class="button-nav" href="/login/logout">Sair</a></li>
         </ul>
       </nav>
     </header>

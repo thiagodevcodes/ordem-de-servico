@@ -9,14 +9,14 @@ module.exports = {
               login: req.body.login,
               senha: hashedPassword,
               salt: 10,
-              admin: true,
+              admin: req.body.admin || false,
               ativo: true
             }
 
             if(req.body.confirm == req.body.senha) {
                 await Users.create(user)
                 .then( () => {
-                    res.redirect("/")
+                    res.redirect("/users")
                 }).catch( () => {
                     res.send("Not Found" + err)
                 })

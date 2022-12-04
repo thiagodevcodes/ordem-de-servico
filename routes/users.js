@@ -39,10 +39,6 @@ router.get("/finalizar/:id", async(req, res) => {
   UserController.finallyUser(req,res)
 })
 
-//LOGOUT
 
-router.get("/logout", (req, res) => {
-  res.clearCookie('connect.sid').redirect("/login");
-})
 
 module.exports = router;

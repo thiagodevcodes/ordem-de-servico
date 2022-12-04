@@ -16,6 +16,10 @@ router.post('/',
     })
 );
 
+router.get("/logout", (req, res) => {
+    res.clearCookie('connect.sid').redirect("/login");
+})
+
 
 
 
