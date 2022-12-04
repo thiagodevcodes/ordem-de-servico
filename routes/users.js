@@ -1,61 +1,48 @@
 const express = require('express');
 const router = express.Router();
-const Usuario = require("../public/classes/users")
-const bcrypt = require("bcryptjs");
+const UserController = require("../controllers/UserController");
 
-/* GET users listing. */
-router.get("/", async(req, res) => {
-  await Usuario.prototype.mostrarUsuarios()
-  .then( (posts) => {
-      res.render("users", {
-          posts: posts
-      })
-  }).catch( () => {
-      res.send("Not Found");
-  }) 
-})
-
-router.get("/permissao/:id", async(req, res) => {
-  const user = await Usuario.prototype.mostrarUsuario(req.params.id);
-  const admin = user.admin;
-
-  await Usuario.prototype.atualizarUsuario({ admin: !admin }, req.params.id)
-  .then( () => {
-      res.redirect("..")
-  }).catch( () => {
-      res.send("Not Found")
-  });
-})
+//CREATE
 
 router.post("/", async(req,res) => {
-  bcrypt.hash(req.body.senha, 10, async function(err, hashedPassword) {
-    let user = {
-      login: req.body.login,
-      senha: hashedPassword,
-      salt: 10,
-      admin: true,
-      ativo: true
-    }
-
-    if(req.body.confirm == req.body.senha) {
-      await Usuario.prototype.cadastrarUsuario(user)
-      .then( () => {
-          res.redirect("/users")
-      }).catch( () => {
-          res.send("Not Found")
-      })
-    }
-  });
+  UserController.createUser(req,res);
 })
+
+//READ
+
+router.get("/", async(req, res) => {
+  UserController.readUsers(req,res);
+})
+
+//UPDATE
+
+router.post("/:id", async(req,res) => {
+  UserController.updateUser(req,res)
+})
+
+//ALTER PERMISSION
+
+router.get("/permissao/:id", async(req, res) => {
+  UserController.adminUser(req,res);
+})
+
+
+//DELETE
+
+router.delete("/:id", (req,res) => {
+  UserController.deleteUser(req.res);
+})
+
+//FINALLY ACESS
 
 router.get("/finalizar/:id", async(req, res) => {
-  await Usuario.prototype.atualizarUsuario({ ativo: false }, req.params.id)
-  .then( () => {
-      res.redirect("..")
-  }).catch( () => {
-      res.send("Not Found")
-  });
+  UserController.finallyUser(req,res)
 })
 
+//LOGOUT
+
+router.get("/logout", (req, res) => {
+  res.clearCookie('connect.sid').redirect("/login");
+})
 
 module.exports = router;
