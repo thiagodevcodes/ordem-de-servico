@@ -1,9 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 
-* {
-  margin: 0;
-  padding: 0;
-}
 
 .button-nav {
   background-color: var(--primary-color);
@@ -40,7 +36,7 @@ nav {
   align-items: center;
   font-family: system-ui, -apple-system, Helvetica, Arial, sans-serif;
   background-color: var(--primary-color);
-  height: 8vh;
+  height: 60px;
   z-index: 2;
 }
 
@@ -68,9 +64,12 @@ nav {
   body {
     overflow-x: hidden;
   }
+
+
+
   .nav-list {
     position: absolute;
-    top: 8vh;
+    top: 60px;
     right: 0;
     width: 100vw;
     height: 92vh;
