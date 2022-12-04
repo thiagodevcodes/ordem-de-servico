@@ -69,7 +69,15 @@
             <tbody>
                 {{#each posts}}
                     <tr>
-                        <td>{{admin}}</td>
+                        {{#if admin}}
+                        <td>
+                            Sim
+                        </td>
+                        {{else}}
+                        <td>
+                            Não
+                        </td>
+                        {{/if}}
                         <td>{{login}}</td>
                         <td class="td-button">
                             <a href="/users/permissao/{{id}}"><button class="registros-button">Alterar</button></a> 
