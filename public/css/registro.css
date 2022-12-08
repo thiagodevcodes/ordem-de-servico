@@ -6,7 +6,7 @@ body {
 
 .registros-button {
     background-color:var(--primary-color);
-    padding: 8px;
+    padding: 6px 15px;
     border: none;
     border-radius: 10px;
     cursor: pointer;
@@ -69,6 +69,11 @@ body {
     max-height: 70vh;
 }
 
+.img-button {
+    width: 25px;
+    filter: invert(1);
+}
+
 .table {
     border-collapse: collapse;
     border-spacing: 0;
@@ -85,6 +90,7 @@ body {
 .table-head {
     position: sticky;
     top: -0.1px;
+    z-index: 1;
 }
 
 .table thead th {
